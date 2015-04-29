@@ -11,7 +11,9 @@ public class WarGUI extends JFrame {
    private int turn;
    private String player1name, player2name, lastThing;
    
-   private JLabel p1name, p2name, p1Card, p2Card, lastAction, tllabel, tclabel, trlabel, turnCount, p1cardcount, p2cardcount;
+   private CardIcon player1card, player2card;
+   
+   private JLabel p1name, p2name, p1Card, p2Card, lastAction, tllabel, tclabel, trlabel, turnCounter, p1cardcount, p2cardcount;
    private JPanel leftpanel, centerpanel, rightpanel, toppanel, bottompanel, midpanel, tlpanel, tcpanel, trpanel, mlpanel, mrpanel, mctpanel, mcbpanel;
    private JButton drawButton;
    
@@ -19,6 +21,9 @@ public class WarGUI extends JFrame {
    public WarGUI(String p1, String p2){
       player1name = p1;
       player2name = p2;
+      
+      player1card = new CardIcon(1,14);
+      player2card = new CardIcon(1,14);
       
       turn = 0;
       
@@ -80,14 +85,16 @@ public class WarGUI extends JFrame {
       rightpanel.add(p2Card, BorderLayout.CENTER);
       
       mlpanel = new JPanel();
-      turnCount = new JLabel("Cards in Deck: ");
-      turnCount.setFont(new Font("Courier New", Font.BOLD, 25));
-      mlpanel.add(turnCount);
+      //turnCounter = new JLabel("Cards in Deck: " + war.pile1Size());
+      turnCounter = new JLabel("Cards in Deck: " + 26);
+      turnCounter.setFont(new Font("Courier New", Font.BOLD, 25));
+      mlpanel.add(turnCounter);
       
       mrpanel = new JPanel();
-      turnCount = new JLabel("Cards in Deck: ");
-      turnCount.setFont(new Font("Courier New", Font.BOLD, 25));
-      mrpanel.add(turnCount);
+      // turnCounter = new JLabel("Cards in Deck: " + war.pile2Size());
+      turnCounter = new JLabel("Cards in Deck: " + 26);
+      turnCounter.setFont(new Font("Courier New", Font.BOLD, 25));
+      mrpanel.add(turnCounter);
       
       leftpanel.add(mlpanel, BorderLayout.SOUTH);
       rightpanel.add(mrpanel, BorderLayout.SOUTH);
@@ -103,15 +110,15 @@ public class WarGUI extends JFrame {
       
       drawButton = new JButton ("DO WAR! (This Draws a Card)");
       drawButton.setFont(new Font("Courier New", Font.BOLD, 35));
-   // drawButton.addActionListener(new DrawAction());    
+      drawButton.addActionListener(new DrawAction());    
       centerpanel.add(drawButton);
       
       
       mcbpanel = new JPanel();
       //mcbpanel.setLayout(new BorderLayout());
-      turnCount = new JLabel("Turn Count: " + turn);
-      turnCount.setFont(new Font("Courier New", Font.BOLD, 20));
-      mcbpanel.add(turnCount);
+      turnCounter = new JLabel("Turn Count: " + turn);
+      turnCounter.setFont(new Font("Courier New", Font.BOLD, 20));
+      mcbpanel.add(turnCounter);
       centerpanel.add(mcbpanel);
       
       
@@ -120,7 +127,7 @@ public class WarGUI extends JFrame {
       midpanel.add(rightpanel);
       
       
-      bottompanel.add(new JLabel("War - The Game by Shayan Alexander Amir-Kabirian"));
+      bottompanel.add(new JLabel("War - by Shayan Alexander Amir-Kabirian"));
       
       
       add(toppanel, BorderLayout.NORTH);
@@ -138,15 +145,22 @@ public class WarGUI extends JFrame {
    
    public static void main(String [] args){
       WarGUI gui = new WarGUI();
-     gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     gui.pack();
-     gui.setVisible(true);
+      gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      gui.pack();
+      gui.setVisible(true);
 
    }
 
- //  private class DrawAction implements ActionListener {
-      
- //  }
+   private class DrawAction implements ActionListener {
+   
+      public void actionPerformed(ActionEvent event){
+         war.draw();
+         p1Card.setIcon(war.getCard1().getIcon());
+         p2Card.setIcon(war.getCard2().getIcon());
+         turn++;
+         turnCounter.setText("Turn Count: " + turn);
+      }
+   }
 
 
 }

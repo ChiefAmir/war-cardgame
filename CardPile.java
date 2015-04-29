@@ -55,8 +55,8 @@ public class CardPile{
    }
    
    
-   public Card draw(){
-      return(Card)pile.dequeue();
+   public CardIcon draw(){
+      return(CardIcon)pile.dequeue();
    }
    
    public void peek(){

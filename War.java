@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class War {
+public class War{
    
    private CardPile pile1, pile2;
    private CardIcon card1, card2;
@@ -19,8 +19,11 @@ public class War {
          pile2Array.add(deck.draw());
       }
       
-      CardPile pile1 = new CardPile(pile1Array.toArray(new Card[pile1Array.size()]));
-      CardPile pile2 = new CardPile(pile2Array.toArray(new Card[pile2Array.size()]));
+      CardPile pile1 = new CardPile(pile1Array.toArray(new CardIcon [pile1Array.size()]));
+      CardPile pile2 = new CardPile(pile2Array.toArray(new CardIcon [pile2Array.size()]));
+      
+      //card1 = new CardIcon();
+      //card2 = new CardIcon();
       
    }
 
@@ -33,6 +36,17 @@ public class War {
       return pile2.size();
    }
    
+   public void draw(){
+      card1 = pile1.draw();
+      card2 = pile2.draw();
+   }
    
+   public CardIcon getCard1(){
+      return card1;
+   }
+   
+   public CardIcon getCard2(){
+      return card2;
+   }
 
 }

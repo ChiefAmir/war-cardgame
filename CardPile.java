@@ -10,7 +10,7 @@ public class CardPile{
    
    public CardPile(){
       pile = new Queue();
-      pileArray = new ArrayList<Card>();      
+      pileArray = new ArrayList<Card>();    
    }
    
    public CardPile(CardPile otherPile){
@@ -29,7 +29,7 @@ public class CardPile{
       for(Card card : pileArray){
          pile.enqueue(card);
       }  
-      System.out.println("TEST");
+      
    }
 
    

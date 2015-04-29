@@ -18,10 +18,10 @@ public class War{
       CardPile pile2 = new CardPile();
       
       for(int i = 0; i < 26; i++){
-         pile1Array.add(deck.draw());
+         pile1.add(deck.draw());
       }
       for(int i = 0; i < 26; i++){
-         pile2Array.add(deck.draw());
+         pile2.add(deck.draw());
       }
       
       //CardPile pile1 = new CardPile(pile1Array.toArray(new CardIcon [pile1Array.size()]));

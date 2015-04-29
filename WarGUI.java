@@ -87,8 +87,8 @@ public class WarGUI extends JFrame {
       rightpanel.add(p2Card, BorderLayout.CENTER);
       
       mlpanel = new JPanel();
-      //turnCounter = new JLabel("Cards in Deck: " + war.pile1Size());
-      turnCounter = new JLabel("Cards in Deck: " + 26);
+      turnCounter = new JLabel("Cards in Deck: " + war.pile1Size());
+      //turnCounter = new JLabel("Cards in Deck: " + 26);
       turnCounter.setFont(new Font("Courier New", Font.BOLD, 25));
       mlpanel.add(turnCounter);
       

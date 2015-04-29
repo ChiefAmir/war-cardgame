@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.ImageIcon;
 
 public class CardPile{
    
@@ -9,9 +10,7 @@ public class CardPile{
    
    public CardPile(){
       pile = new Queue();
-      pileArray = new ArrayList<Card>();
-      this.makePile();
-      
+      pileArray = new ArrayList<Card>();      
    }
    
    public CardPile(CardPile otherPile){
@@ -30,6 +29,7 @@ public class CardPile{
       for(Card card : pileArray){
          pile.enqueue(card);
       }  
+      System.out.println("TEST");
    }
 
    
@@ -51,7 +51,6 @@ public class CardPile{
          pile.enqueue(pileArray.get(i));
       }
       pileArray = null;
-      
    }
    
    

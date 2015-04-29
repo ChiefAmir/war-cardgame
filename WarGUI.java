@@ -19,6 +19,9 @@ public class WarGUI extends JFrame {
    
    
    public WarGUI(String p1, String p2){
+      war = new War();
+      
+      
       player1name = p1;
       player2name = p2;
       
@@ -29,7 +32,6 @@ public class WarGUI extends JFrame {
       
       lastThing = "Welcome to War";
       
-      war = new War();
       
       toppanel = new JPanel();
       midpanel = new JPanel();
@@ -96,6 +98,8 @@ public class WarGUI extends JFrame {
       turnCounter.setFont(new Font("Courier New", Font.BOLD, 25));
       mrpanel.add(turnCounter);
       
+      
+      
       leftpanel.add(mlpanel, BorderLayout.SOUTH);
       rightpanel.add(mrpanel, BorderLayout.SOUTH);
       
@@ -154,9 +158,10 @@ public class WarGUI extends JFrame {
    private class DrawAction implements ActionListener {
    
       public void actionPerformed(ActionEvent event){
+         System.out.println("TEST");
          war.draw();
-         p1Card.setIcon(war.getCard1().getIcon());
-         p2Card.setIcon(war.getCard2().getIcon());
+         p1Card.setIcon(war.getCard1Icon());
+         p2Card.setIcon(war.getCard2Icon());
          turn++;
          turnCounter.setText("Turn Count: " + turn);
       }

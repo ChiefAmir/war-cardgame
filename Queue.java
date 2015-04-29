@@ -3,6 +3,7 @@ public class Queue  implements QueueInterface{
 
   public Queue() {
     lastNode = null;
+
   }  
   /** Determines whether a queue is empty.
       @returns true if the queue is empty; otherwise returns false.
@@ -78,6 +79,7 @@ public class Queue  implements QueueInterface{
   
   public int size() {
         int size = 0;
+        
         
         if (lastNode != null) {
             Node curr = lastNode;

@@ -75,5 +75,19 @@ public class Queue  implements QueueInterface{
                              + "queue empty");
     } 
   }  
+  
+  public int size() {
+        int size = 0;
+        
+        if (lastNode != null) {
+            Node curr = lastNode;
+            do{
+               size++;
+               curr = curr.getNext();
+            }while(curr != lastNode);
+            //size++;
+        }
+        return size;
+   }
 
 } 

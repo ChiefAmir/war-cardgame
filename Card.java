@@ -4,9 +4,9 @@ public class Card{
    
    public static final int JACK = 11, QUEEN = 12, KING = 13, ACE = 14;
    
-   private static final int HIGH_RANKS = 14, LOW_RANKS = 2, HIGH_SUITS = 4, LOW_SUITS = 1;
+   public static final int HIGH_RANKS = 14, LOW_RANKS = 2, HIGH_SUITS = 4, LOW_SUITS = 1;
    
-   private int rank, suit;
+   public int rank, suit;
    
    
    public Card (int new_suit, int new_rank){

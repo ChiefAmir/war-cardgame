@@ -15,8 +15,8 @@ public class CardPile{
    }
    
    public CardPile(CardPile otherPile){
-
       Queue temp = new Queue();
+      pile = new Queue();
       while(otherPile.isEmpty() != true){
          temp.enqueue(otherPile.draw());
          pile.enqueue(temp.dequeue());
@@ -25,9 +25,10 @@ public class CardPile{
    }
    
    
-   public CardPile(ArrayList<Card> newPileArray){
-      for(int i = 0; i < newPileArray.size(); i++){
-         pile.enqueue(newPileArray.get(i));
+   public CardPile(Card [] pileArray){
+      pile = new Queue();
+      for(Card card : pileArray){
+         pile.enqueue(card);
       }  
    }
 
@@ -38,7 +39,7 @@ public class CardPile{
     
       for(int s = 1; s < 5; s++){
          for(int r = 2; r < 15; r++){
-            Card card = new Card(s, r);
+            Card card = new CardIcon(s, r);
             pileArray.add(card);
          }
       }
@@ -49,12 +50,12 @@ public class CardPile{
       for(int i = 0; i < pileArray.size(); i++){
          pile.enqueue(pileArray.get(i));
       }
+      pileArray = null;
       
    }
    
    
    public Card draw(){
-      pileArray.remove(pile.peek());
       return(Card)pile.dequeue();
    }
    
@@ -64,16 +65,19 @@ public class CardPile{
    
    public void add(Card card){
       pile.enqueue(card);
-      pileArray.add(card);
    }
    
    public void empty(){
+      pile.dequeueAll();
+   }
+   
+   public int size(){
+      return(pile.size());
    }
    
    
    public boolean isEmpty(){
-      //return(pile.size() == 0);
-      return true;
+      return(pile.size() == 0);
    }
     
 

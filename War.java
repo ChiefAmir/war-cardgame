@@ -86,7 +86,7 @@ public class War{
    
    public String emptyBuffer(){
       if (result() == 2 || (result() == 1 && pile2.size() == 0)){
-         for (int i = 0; i > bufferCounter; i++){
+         for (int i = 0; i < bufferCounter; i++){
             pile1.add(buffer1.draw());
             pile1.add(buffer2.draw());
          }
@@ -94,7 +94,7 @@ public class War{
          return "Player 1 Wins the hand";
       }
       else if (result() == 0 || (result() == 1 && pile1.size() == 0)){
-         for (int i = 0; i > bufferCounter; i++){
+         for (int i = 0; i < bufferCounter; i++){
             pile2.add(buffer2.draw());
             pile2.add(buffer1.draw());
          }

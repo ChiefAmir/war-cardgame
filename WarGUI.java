@@ -173,11 +173,17 @@ public class WarGUI extends JFrame {
             lastAction.setText(lastThing);         
             p1cardcount.setText("Cards in Deck: " + war.pile1Size());
             p2cardcount.setText("Cards in Deck: " + war.pile2Size());
-            turnCounter.setText("Turn Count: " + turn);
+            turnCounter.setText("Turn Count: " + turn);   
+            if (war.pile1Size() == 0 || war.pile2Size() == 0){
+               lastThing = war.declareVictor();
+               lastAction.setText(lastThing);
+               drawButton.setEnabled(false);
+            }        
          }
          else{
             lastThing = war.declareVictor();
-            lastAction.setText(lastThing);                 
+            lastAction.setText(lastThing);   
+            drawButton.setEnabled(false);              
          }
       }
    }

@@ -100,6 +100,19 @@ public class Card{
    }
    
    
+   public int compare(Card otherCard){
+      if (rank > otherCard.rank){
+         return 2;
+      }
+      else if (rank == otherCard.rank){
+         return 1;
+      }
+      // rank < otherCard.rank is all that is left over
+      else{
+         return 0;
+      }
+   }
+   
    
    public boolean equals(Card otherCard){
       return (this.suit == otherCard.suit && this.rank == otherCard.rank);

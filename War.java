@@ -8,14 +8,18 @@ public class War{
    
    private CardPile pile1, pile2, buffer1, buffer2;
    private CardIcon card1, card2;
+   private int bufferCounter;
    
    public War(){
       CardPile deck = new CardPile();
       deck.makePile();
       //ArrayList<Card> pile1Array = new ArrayList<Card>();
       //ArrayList<Card> pile2Array = new ArrayList<Card>();
-      CardPile pile1 = new CardPile();
-      CardPile pile2 = new CardPile();
+      pile1 = new CardPile();
+      pile2 = new CardPile();
+      buffer1 = new CardPile();
+      buffer2 = new CardPile();
+      bufferCounter = 1;
       
       for(int i = 0; i < 26; i++){
          pile1.add(deck.draw());
@@ -59,8 +63,32 @@ public class War{
       return card2.getIcon();
    }
    
-   //public void emptyBuffer(){
+   public int result(){
+      return card1.compare(card2);
+      // 2 is greater, 1 is equal, 0 is lesser
+
+   }
+   
+   public void emptyBuffer(){
+      if (result() == 2 || (result() == 1 && pile2.size() == 0)){
+         for (int i = 0; i > bufferCounter; i++){
+            pile1.add(buffer1.draw());
+            pile1.add(buffer2.draw());
+         }
+         bufferCounter = 1;
+      }
+      else if (result() == 0 || (result() == 1 && pile1.size() == 0)){
+         for (int i = 0; i > bufferCounter; i++){
+            pile2.add(buffer2.draw());
+            pile2.add(buffer1.draw());
+         }
+         bufferCounter = 1;
+      }
+      // On a draw
+      else {
+         bufferCounter++;
+      }
       
-   //}
+   }
 
 }

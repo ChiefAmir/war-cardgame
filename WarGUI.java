@@ -87,16 +87,16 @@ public class WarGUI extends JFrame {
       rightpanel.add(p2Card, BorderLayout.CENTER);
       
       mlpanel = new JPanel();
-      turnCounter = new JLabel("Cards in Deck: " + war.pile1Size());
-      //turnCounter = new JLabel("Cards in Deck: " + 26);
-      turnCounter.setFont(new Font("Courier New", Font.BOLD, 25));
-      mlpanel.add(turnCounter);
+      p1cardcount = new JLabel("Cards in Deck: " + war.pile1Size());
+      p1cardcount.setFont(new Font("Courier New", Font.BOLD, 25));
+      mlpanel.add(p1cardcount);
+      mlpanel.setBackground(Color.WHITE);
       
       mrpanel = new JPanel();
-      // turnCounter = new JLabel("Cards in Deck: " + war.pile2Size());
-      turnCounter = new JLabel("Cards in Deck: " + 26);
-      turnCounter.setFont(new Font("Courier New", Font.BOLD, 25));
-      mrpanel.add(turnCounter);
+      p2cardcount = new JLabel("Cards in Deck: " + war.pile2Size());
+      p2cardcount.setFont(new Font("Courier New", Font.BOLD, 25));
+      mrpanel.add(p2cardcount);
+      mrpanel.setBackground(Color.WHITE);
       
       
       
@@ -109,6 +109,7 @@ public class WarGUI extends JFrame {
       lastAction = new JLabel(lastThing);
       lastAction.setFont(new Font("Courier New", Font.BOLD, 35));
       mctpanel.add(lastAction);
+      mctpanel.setBackground(Color.WHITE);
       centerpanel.add(mctpanel);
       
       
@@ -123,8 +124,10 @@ public class WarGUI extends JFrame {
       turnCounter = new JLabel("Turn Count: " + turn);
       turnCounter.setFont(new Font("Courier New", Font.BOLD, 20));
       mcbpanel.add(turnCounter);
+      mcbpanel.setBackground(Color.WHITE);
       centerpanel.add(mcbpanel);
       
+      midpanel.setBackground(Color.WHITE);
       
       midpanel.add(leftpanel);
       midpanel.add(centerpanel);
@@ -158,11 +161,16 @@ public class WarGUI extends JFrame {
    private class DrawAction implements ActionListener {
    
       public void actionPerformed(ActionEvent event){
-         System.out.println("TEST");
          war.draw();
          p1Card.setIcon(war.getCard1Icon());
          p2Card.setIcon(war.getCard2Icon());
+         
          turn++;
+         
+         war.emptyBuffer();
+         
+         p1cardcount.setText("Cards in Deck: " + war.pile1Size());
+         p2cardcount.setText("Cards in Deck: " + war.pile2Size());
          turnCounter.setText("Turn Count: " + turn);
       }
    }

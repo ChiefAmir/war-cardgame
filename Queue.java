@@ -77,6 +77,10 @@ public class Queue  implements QueueInterface{
     } 
   }  
   
+  /**
+   * Gets queue size
+   * @return integer of queue size
+   */
   public int size() {
         int size = 0;
         

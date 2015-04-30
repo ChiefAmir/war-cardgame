@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * @author Shayan Amir-Kabirian
+ */
 public class CardPileTester {
 
+   //THIS IS ALL OBSOLETE
 
     public static void main(String [] args) {
 

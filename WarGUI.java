@@ -3,36 +3,49 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-
+/**
+ * @author Shayan Amir-Kabirian
+ */
 public class WarGUI extends JFrame {
-
+	
+	// Initialize war itself
    private War war;
    
+   // Initialize turn counters and Strings
    private int turn;
    private String player1name, player2name, lastThing;
    
+   // Initialize GUI elements
    private CardIcon player1card, player2card;
-   
-   private JLabel p1name, p2name, p1Card, p2Card, lastAction, tllabel, tclabel, trlabel, turnCounter, p1cardcount, p2cardcount;
+   private JLabel p1Card, p2Card, lastAction, tllabel, tclabel, trlabel, turnCounter, p1cardcount, p2cardcount;
    private JPanel leftpanel, centerpanel, rightpanel, toppanel, bottompanel, midpanel, tlpanel, tcpanel, trpanel, mlpanel, mrpanel, mctpanel, mcbpanel;
    private JButton drawButton;
    
    
+   /**
+    * Constructor 
+    * Creates GUI Window
+    * @param p1 String name of player 1
+    * @param p2 String name of player 2
+    */
    public WarGUI(String p1, String p2){
       war = new War();
       
-      
+      // Player names
       player1name = p1;
       player2name = p2;
       
+      // Create initial cards. Their values are placeholders
       player1card = new CardIcon(1,14);
       player2card = new CardIcon(1,14);
       
+      // Turn is zero
       turn = 0;
       
+      // Current Action is to welcome people
       lastThing = "Welcome to War";
       
-      
+      // three main panels and window title
       toppanel = new JPanel();
       midpanel = new JPanel();
       bottompanel = new JPanel();
@@ -41,7 +54,8 @@ public class WarGUI extends JFrame {
       setTitle("War - The Game");
       
       
-      
+      // Top Panel is split up into three side-by-side grid panels 
+      // for name purposes
       tllabel = new JLabel(player1name);
       tclabel = new JLabel("vs");
       trlabel = new JLabel(player2name);
@@ -58,14 +72,13 @@ public class WarGUI extends JFrame {
       tcpanel.add(tclabel);
       trpanel.add(trlabel);
       
-      
-      
-       
       toppanel.add(tlpanel);
       toppanel.add(tcpanel);
       toppanel.add(trpanel);
       
       
+      // Midpanel contains cards, button, turn counter, card counters,
+      // and action display, all nestled into their own panels within panels
       midpanel.setLayout(new GridLayout(1,3));
       leftpanel = new JPanel();
       leftpanel.setLayout(new BorderLayout());
@@ -133,10 +146,10 @@ public class WarGUI extends JFrame {
       midpanel.add(centerpanel);
       midpanel.add(rightpanel);
       
-      
+      // Bottom panel contains credits
       bottompanel.add(new JLabel("War - by Shayan Alexander Amir-Kabirian"));
       
-      
+      // add the main panels to the window
       add(toppanel, BorderLayout.NORTH);
       add(midpanel, BorderLayout.CENTER);   
       add(bottompanel, BorderLayout.SOUTH);
@@ -144,12 +157,16 @@ public class WarGUI extends JFrame {
       
    }
    
-   
+   /**
+    * Alternate Constructor that gives default player names
+    */
    public WarGUI(){
       this("$Player1", "$Player2");
    }
    
-   
+   /**
+    * Main method, called to begin the game
+    */
    public static void main(String [] args){
       WarGUI gui = new WarGUI();
       gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -157,9 +174,19 @@ public class WarGUI extends JFrame {
       gui.setVisible(true);
 
    }
-
-   private class DrawAction implements ActionListener {
    
+   /**
+    * Button Action
+    * @author Shayan
+    */
+   private class DrawAction implements ActionListener {
+	   
+	   /**
+	    * Upon Button press:
+	    * Draw cards, get card images, increase turn, empty the buffer
+	    * and set the text labels
+	    * Then check for victory conditions
+	    */
       public void actionPerformed(ActionEvent event){
          if (war.pile1Size() != 0 || war.pile2Size() != 0){
             war.draw();

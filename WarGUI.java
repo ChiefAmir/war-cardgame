@@ -113,7 +113,7 @@ public class WarGUI extends JFrame {
       centerpanel.add(mctpanel);
       
       
-      drawButton = new JButton ("DO WAR! (This Draws a Card)");
+      drawButton = new JButton ("TO BATTLE! (Draw Cards)");
       drawButton.setFont(new Font("Courier New", Font.BOLD, 35));
       drawButton.addActionListener(new DrawAction());    
       centerpanel.add(drawButton);
@@ -146,7 +146,7 @@ public class WarGUI extends JFrame {
    
    
    public WarGUI(){
-      this("Computer", "Human");
+      this("$Player1", "$Player2");
    }
    
    
@@ -178,12 +178,16 @@ public class WarGUI extends JFrame {
                lastThing = war.declareVictor();
                lastAction.setText(lastThing);
                drawButton.setEnabled(false);
+               p1Card.setIcon(new ImageIcon("cards/back.png"));
+               p2Card.setIcon(new ImageIcon("cards/back.png"));
             }        
          }
          else{
             lastThing = war.declareVictor();
             lastAction.setText(lastThing);   
-            drawButton.setEnabled(false);              
+            drawButton.setEnabled(false);  
+            p1Card.setIcon(new ImageIcon("cards/back.png"));
+            p2Card.setIcon(new ImageIcon("cards/back.png"));            
          }
       }
    }

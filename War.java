@@ -69,6 +69,21 @@ public class War{
 
    }
    
+   public String declareVictor(){
+      // This will not be achieved, but necessary for use of else statement
+      if (pile1.size() == 0 && pile2.size() == 0){
+         // Cards have disappeared from the game. Program assumes players ate the missing cards.
+         return "Players ate cards. No Winner.";
+      }
+      else if (pile1.size() == 0){
+         return "Player 2 Wins the Game!";
+      }
+      else{
+         return "Player 1 Wins the Game!";
+      }
+      
+   }
+   
    public String emptyBuffer(){
       if (result() == 2 || (result() == 1 && pile2.size() == 0)){
          for (int i = 0; i > bufferCounter; i++){

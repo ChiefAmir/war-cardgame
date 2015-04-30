@@ -161,18 +161,24 @@ public class WarGUI extends JFrame {
    private class DrawAction implements ActionListener {
    
       public void actionPerformed(ActionEvent event){
-         war.draw();
-         p1Card.setIcon(war.getCard1Icon());
-         p2Card.setIcon(war.getCard2Icon());
-         
-         turn++;
-         
-         lastThing = war.emptyBuffer();
-         
-         lastAction.setText(lastThing);         
-         p1cardcount.setText("Cards in Deck: " + war.pile1Size());
-         p2cardcount.setText("Cards in Deck: " + war.pile2Size());
-         turnCounter.setText("Turn Count: " + turn);
+         if (war.pile1Size() != 0 || war.pile2Size() != 0){
+            war.draw();
+            p1Card.setIcon(war.getCard1Icon());
+            p2Card.setIcon(war.getCard2Icon());
+            
+            turn++;
+            
+            lastThing = war.emptyBuffer();
+            
+            lastAction.setText(lastThing);         
+            p1cardcount.setText("Cards in Deck: " + war.pile1Size());
+            p2cardcount.setText("Cards in Deck: " + war.pile2Size());
+            turnCounter.setText("Turn Count: " + turn);
+         }
+         else{
+            lastThing = war.declareVictor();
+            lastAction.setText(lastThing);                 
+         }
       }
    }
 

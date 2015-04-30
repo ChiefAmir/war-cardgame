@@ -69,13 +69,14 @@ public class War{
 
    }
    
-   public void emptyBuffer(){
+   public String emptyBuffer(){
       if (result() == 2 || (result() == 1 && pile2.size() == 0)){
          for (int i = 0; i > bufferCounter; i++){
             pile1.add(buffer1.draw());
             pile1.add(buffer2.draw());
          }
          bufferCounter = 1;
+         return "Player 1 Wins the hand";
       }
       else if (result() == 0 || (result() == 1 && pile1.size() == 0)){
          for (int i = 0; i > bufferCounter; i++){
@@ -83,10 +84,12 @@ public class War{
             pile2.add(buffer1.draw());
          }
          bufferCounter = 1;
+         return "Player 2 Wins the hand";
       }
       // On a draw
       else {
          bufferCounter++;
+         return "Tie";
       }
       
    }

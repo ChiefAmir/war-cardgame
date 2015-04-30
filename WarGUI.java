@@ -167,8 +167,9 @@ public class WarGUI extends JFrame {
          
          turn++;
          
-         war.emptyBuffer();
+         lastThing = war.emptyBuffer();
          
+         lastAction.setText(lastThing);         
          p1cardcount.setText("Cards in Deck: " + war.pile1Size());
          p2cardcount.setText("Cards in Deck: " + war.pile2Size());
          turnCounter.setText("Turn Count: " + turn);

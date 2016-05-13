@@ -1,8 +1,4 @@
 
-TESTING
-
-
-TESTING 2
 /**
  * @author Shayan Amir-Kabirian
  */
